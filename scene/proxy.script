@@ -1,0 +1,67 @@
+local defrx= require "defrx.defrx"
+local TITLE="#title"
+local INGAME="#ingame"
+local INITIAL_LOADING="#initial_loading"
+
+
+function pause_time(self, message_id, message)
+	msg.post(".", "set_time_step", {factor = 0, mode = 0})
+end
+
+function play_time(self, message_id, message)
+	msg.post(".", "set_time_step", {factor = 1, mode = 0})
+end
+
+function init(self)
+	self.current=TITLE
+	msg.post(INITIAL_LOADING, "async_load")
+	defrx.create_stream("pause_time")
+	defrx.observe(self, "pause_time",pause_time)
+	defrx.create_stream("play_time")
+	defrx.observe(self, "play_time",play_time)
+end
+
+function on_message(self, message_id, message, sender)
+	defrx.on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		if sender.fragment == hash("initial_loading") then -- <4>
+			msg.post(INITIAL_LOADING, "enable") -- <5>
+			msg.post(self.current, "async_load") -- <6>
+			self.menu_loading_started_time = os.time() -- <7>
+		elseif self.menu_loading_started_time and sender.fragment == hash("title") then -- <8>
+			local total_menu_loading_time = os.time() - self.menu_loading_started_time
+			local minimum_splash_duration = 2
+			local delay = math.max(minimum_splash_duration - total_menu_loading_time, 0) -- <9>
+			timer.delay(delay, false, function() -- <10>
+				msg.post(INITIAL_LOADING, "disable")
+				msg.post(INITIAL_LOADING, "final")
+				msg.post(INITIAL_LOADING, "unload") -- <11>
+				msg.post(sender, "init")
+				msg.post(sender, "enable") -- <12>
+				msg.post(sender, "acquire_input_focus")
+			end)
+			self.menu_loading_started_time=nil
+		else
+			msg.post(sender, "init")
+			msg.post(sender, "enable")
+			msg.post(sender, "acquire_input_focus")
+		end
+		msg.post(".", "set_time_step", {factor = 1, mode = 0})
+	end
+	if message_id == hash("proxy_unloaded") then
+		if self.current then
+			msg.post(self.current, "async_load")
+		end
+	end
+	if message_id == hash("change_scene") then
+		msg.post(self.current, "disable")
+		msg.post(self.current, "final")
+		msg.post(self.current, "unload")
+		self.current=message.next
+	end
+end
+
+function final(self)
+	defrx.cancel_all_observing(self)
+end
+

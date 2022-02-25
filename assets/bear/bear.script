@@ -1,0 +1,35 @@
+local MAX_SPEED = 200
+go.property("friction", 0.1)
+go.property("accel", 20)
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.vel=vmath.vector3()
+end
+
+function update(self, dt)
+	local pos = go.get_position()+self.vel*dt
+	go.set_position(pos)
+	self.vel=self.vel-self.vel*self.friction
+end
+
+function on_input(self, action_id, action)
+	if action_id==hash("left") then
+		self.vel.x=self.vel.x-self.accel
+	elseif action_id==hash("right") then
+		self.vel.x=self.vel.x+self.accel
+	elseif action_id==hash("up") then
+		self.vel.y=self.vel.y+self.accel
+	elseif action_id==hash("down") then
+		self.vel.y=self.vel.y-self.accel
+	end
+	if MAX_SPEED<vmath.length(self.vel) and vmath.length(self.vel)>0 then
+		self.vel=vmath.normalize(self.vel)*MAX_SPEED
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
