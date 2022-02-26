@@ -1,5 +1,5 @@
 local layering = require "assets.layering"
-
+local defrx=require "defrx.defrx"
 
 function init(self)
 	self.interactable=true
@@ -31,5 +31,11 @@ function on_message(self, message_id, message, sender)
 			msg.post("#outline", "disable")
 			msg.post(message.other_id, "release_target")
 		end
+	end
+	if message_id==hash("interact") then
+		defrx.notify("garlic")
+		msg.post("#sprite", "enable")
+		msg.post("#outline", "disable")
+		self.interactable=false
 	end
 end

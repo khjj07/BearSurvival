@@ -5,6 +5,7 @@ function G.init(self)
 	self.node={}
 	self.box_node={}
 	self.text_node={}
+	self.node["fade"]=box_node.create(gui.get_node("fade"),nil)
 	self.node["clock"]=box_node.create(gui.get_node("clock"),nil)
 	self.node["needle"]=box_node.create(gui.get_node("needle"),self.node["clock"])
 	self.node["hp_icon"]=box_node.create(gui.get_node("hp_icon"),nil)
@@ -28,7 +29,15 @@ function G.init(self)
 	self.node["celcius"]=box_node.create(gui.get_node("celcius"),nil)
 	self.node["temperature_bar"]=box_node.create(gui.get_node("temperature_bar"),self.node["celcius"])
 	self.node["temperature"]=text_node.create(gui.get_node("temperature"),self.node["celcius"])
-	self.node["box"]=box_node.create(gui.get_node("box"),nil)
-	self.node["fade"]=box_node.create(gui.get_node("fade"),nil)
+	self.node["inventory"]=box_node.create(gui.get_node("inventory"),nil)
+	self.node["slot1"]=box_node.create(gui.get_node("slot1"),self.node["inventory"])
+	self.node["slot2"]=box_node.create(gui.get_node("slot2"),self.node["inventory"])
+	self.node["slot3"]=box_node.create(gui.get_node("slot3"),self.node["inventory"])
+	self.node["slot4"]=box_node.create(gui.get_node("slot4"),self.node["inventory"])
+	self.node["slot5"]=box_node.create(gui.get_node("slot5"),self.node["inventory"])
+	self.node["slot6"]=box_node.create(gui.get_node("slot6"),self.node["inventory"])
+	self.node["slot7"]=box_node.create(gui.get_node("slot7"),self.node["inventory"])
+	self.node["slot8"]=box_node.create(gui.get_node("slot8"),self.node["inventory"])
+	self.node["slot9"]=box_node.create(gui.get_node("slot9"),self.node["inventory"])
 end
 return G

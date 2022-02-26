@@ -60,5 +60,8 @@ function on_message(self, message_id, message, sender)
 	end
 	if message_id==hash("interact") then
 		defrx.notify("wood")
+		msg.post("#sprite", "enable")
+		msg.post("#outline", "disable")
+		self.interactable=false
 	end
 end

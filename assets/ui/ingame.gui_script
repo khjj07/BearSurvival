@@ -5,6 +5,7 @@ local UI = require "assets.ui.ingame"
 function init(self)
 	defui.init(self)
 	UI.init(self)
+	self.inventory={}
 	defrx.create_stream("minute")
 	defrx.observe(self, "minute", function(self, message_id, message,sender)
 		self.node["needle"]:set_rotation(vmath.vector3(0,0,-message.value*60*0.25))
@@ -48,6 +49,43 @@ function init(self)
 	defrx.create_stream("wake_up")
 	defrx.observe(self, "wake_up", function(self, message_id, message,sender)
 		self.node["fade"]:animate("color",vmath.vector4(0,0,0,0),gui.EASING_INBACK,0.2)
+	end)
+
+	defrx.create_stream("update_inventory")
+	defrx.observe(self, "update_inventory", function(self, message_id, message,sender)
+		for k, v in pairs(self.inventory) do
+			self.node["slot"..k]:change_texture(v,"game")
+			:set_color(vmath.vector4(1,1,1,1))
+		end
+	end)
+	
+	defrx.create_stream("wood")
+	defrx.observe(self, "wood", function(self, message_id, message,sender)
+		if #self.inventory<=9 then
+			table.insert(self.inventory, "wood")
+			defrx.notify("update_inventory")
+		end
+	end)
+	defrx.create_stream("mushroom")
+	defrx.observe(self, "mushroom", function(self, message_id, message,sender)
+		if #self.inventory<=9 then
+			table.insert(self.inventory, "mushroom_1")
+			defrx.notify("update_inventory")
+		end
+	end)
+	defrx.create_stream("mugwort")
+	defrx.observe(self, "mugwort", function(self, message_id, message,sender)
+		if #self.inventory<=9 then
+			table.insert(self.inventory, "mugwort")
+			defrx.notify("update_inventory")
+		end
+	end)
+	defrx.create_stream("garlic")
+	defrx.observe(self, "garlic", function(self, message_id, message,sender)
+		if #self.inventory<=9 then
+			table.insert(self.inventory, "garlic")
+			defrx.notify("update_inventory")
+		end
 	end)
 end
 
