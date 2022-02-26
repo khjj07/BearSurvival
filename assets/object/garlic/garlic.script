@@ -1,5 +1,6 @@
 local layering = require "assets.layering"
 
+
 function init(self)
 	self.interactable=true
 	msg.post("#outline", "disable")
@@ -19,15 +20,15 @@ function on_message(self, message_id, message, sender)
 			msg.post(sender, "release_target")
 		end
 	end
+	if message_id==hash("target_released") then
+		msg.post("#sprite", "enable")
+		msg.post("#outline", "disable")
+	end
 	if message_id==hash("trigger_response") then
 		if not message.enter then
 			msg.post("#sprite", "enable")
 			msg.post("#outline", "disable")
 			msg.post(message.other_id, "release_target")
 		end
-	end
-	if message_id==hash("target_released") then
-		msg.post("#sprite", "enable")
-		msg.post("#outline", "disable")
 	end
 end

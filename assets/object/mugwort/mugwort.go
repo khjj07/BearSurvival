@@ -1,9 +1,24 @@
+components {
+  id: "mugwort"
+  component: "/assets/object/mugwort/mugwort.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/assets/game.atlas\"\n"
   "default_animation: \"mugwort\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
+  "material: \"/assets/behind_sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
@@ -69,7 +84,7 @@ embedded_components {
   type: "sprite"
   data: "tile_set: \"/assets/game.atlas\"\n"
   "default_animation: \"mugwort\"\n"
-  "material: \"/assets/outlined.material\"\n"
+  "material: \"/assets/behind_outlined.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {

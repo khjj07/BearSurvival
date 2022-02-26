@@ -1,26 +1,6 @@
 components {
-  id: "mushroom"
-  component: "/assets/object/mushroom/mushroom.script"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "sprite"
-  type: "sprite"
-  data: "tile_set: \"/assets/game.atlas\"\n"
-  "default_animation: \"mushroom_1\"\n"
-  "material: \"/assets/behind_sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
+  id: "garlic"
+  component: "/assets/object/garlic/garlic.script"
   position {
     x: 0.0
     y: 0.0
@@ -41,7 +21,7 @@ embedded_components {
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"mushroom\"\n"
+  "group: \"mugwort\"\n"
   "mask: \"bear\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
@@ -83,8 +63,28 @@ embedded_components {
   id: "outline"
   type: "sprite"
   data: "tile_set: \"/assets/game.atlas\"\n"
-  "default_animation: \"mushroom_1\"\n"
+  "default_animation: \"garlic\"\n"
   "material: \"/assets/behind_outlined.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "sprite"
+  type: "sprite"
+  data: "tile_set: \"/assets/game.atlas\"\n"
+  "default_animation: \"garlic\"\n"
+  "material: \"/assets/behind_sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {

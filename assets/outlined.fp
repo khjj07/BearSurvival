@@ -1,14 +1,12 @@
 varying mediump vec2 var_texcoord0;
 uniform lowp sampler2D DIFFUSE_TEXTURE;
-uniform lowp vec4 spriteSize; //Fragment Constant for sprite size
-
-const vec4 bordercolor = vec4(0.0, 1.0, 0.0, 0.7);
-
+uniform lowp vec4 bordercolor;
+uniform lowp vec4 offset;
 
 void main()
 {
 	vec4 col = texture2D(DIFFUSE_TEXTURE, var_texcoord0);
-	float offset = 0.002; //float offset = 1.0/spriteSize.x;
+	float offset = offset.x; //float offset = 1.0/spriteSize.x;
 
 	if (col.a > 0.1)
 	gl_FragColor = col;

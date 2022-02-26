@@ -1,4 +1,5 @@
 local layering = require "assets.layering"
+local defrx=require "defrx.defrx"
 local TREE={
 	hash("tree2"),
 	hash("tree4"),
@@ -7,6 +8,12 @@ local TREE={
 	hash("tree7"),
 	hash("tree8")
 }
+go.property("behind_sprite", resource.material(""))
+go.property("front_sprite", resource.material(""))
+go.property("behind_outline", resource.material(""))
+go.property("front_outline", resource.material(""))
+
+
 function init(self)
 	timer.delay(0.1, false, function()
 		math.randomseed(os.time())
@@ -15,11 +22,20 @@ function init(self)
 	msg.post("#sprite", "play_animation",{id=anim})
 	msg.post("#outline", "play_animation",{id=anim})
 	self.interactable=true
+	self.behind=false
+
 	msg.post("#outline", "disable")
 end
 
 function update(self, dt)
 	layering.update(self)
+	if go.get_position("/bear").y<go.get_position().y then
+		go.set("#sprite", "material", self.behind_sprite)
+		go.set("#outline", "material", self.behind_outline)
+	else
+		go.set("#sprite", "material", self.front_sprite)
+		go.set("#outline", "material", self.front_outline)
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -29,6 +45,13 @@ function on_message(self, message_id, message, sender)
 			msg.post("#outline", "enable")
 		else
 			msg.post(sender, "release_target")
+		end
+	end
+	if message_id==hash("trigger_response") then
+		if not message.enter then
+			msg.post("#sprite", "enable")
+			msg.post("#outline", "disable")
+			msg.post(message.other_id, "release_target")
 		end
 	end
 	if message_id==hash("target_released") then

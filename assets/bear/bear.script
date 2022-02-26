@@ -1,5 +1,6 @@
 local move = require "assets.bear.move"
 local layering = require "assets.layering"
+local defrx=require "defrx.defrx"
 local ANIMATION = {
 	left_walk = hash("left_walk"),
 	right_walk = hash("right_walk"),
@@ -26,7 +27,7 @@ local HUNGRY_DECREASE_SLEEP=0.083
 
 local MAX_HUNGRY=100
 
-local defrx=require "defrx.defrx"
+
 
 
 go.property("accel", 100)
@@ -85,13 +86,13 @@ local function rive_animation(self)
 			rive.play_anim("#sprite", "front_idle", go.PLAYBACK_LOOP_FORWARD)
 			self.current_animation=ANIMATION.front_idle
 		end
-	elseif self.vel.y<-30 and math.abs(self.vel.x)<10 and self.current_animation~=ANIMATION.front_walk then
+	elseif self.vel.y<-5 and math.abs(self.vel.x)<20 and self.current_animation~=ANIMATION.front_walk then
 		rive.play_anim("#sprite", "front_walk", go.PLAYBACK_LOOP_FORWARD)
 		self.current_animation=ANIMATION.front_walk
-	elseif self.vel.x>10 and self.current_animation~=ANIMATION.right_walk then
+	elseif self.vel.x>20 and self.current_animation~=ANIMATION.right_walk then
 		rive.play_anim("#sprite", "right_walk", go.PLAYBACK_LOOP_FORWARD)
 		self.current_animation=ANIMATION.right_walk
-	elseif self.vel.x<-1 and self.current_animation~=ANIMATION.left_walk then
+	elseif self.vel.x<-20 and self.current_animation~=ANIMATION.left_walk then
 		rive.play_anim("#sprite", "left_walk", go.PLAYBACK_LOOP_FORWARD)
 		self.current_animation=ANIMATION.left_walk
 	elseif self.vel.y>1 then
@@ -106,6 +107,7 @@ local function rive_animation(self)
 end
 
 function init(self)
+	print(go.get_id())
 	self.daylight=true
 	rive.play_anim("#sprite", "front_idle", go.PLAYBACK_LOOP_FORWARD)
 	self.current_animation=ANIMATION.front_idle
@@ -140,17 +142,24 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if self.interact_target then
-		msg.post(self.interact_target, "target_released")
-	end
+	
 	defrx.on_message(self, message_id, message, sender)
 	if message_id==hash("contact_point_response") and message.other_group ==hash("obstacle") then
 		go.set_position(go.get_position()+message.distance*message.normal)
 	end
-	if message_id==hash("collision_response") and message.other_group == hash("tree") then
-		msg.post(message.other_id, "check_interactable")
-		self.interact_target=message.other_id
-		print(self.interact_target)
+	if message_id==hash("collision_response") and message.own_group == hash("bear") then
+		if self.interact_target  then
+			local last_distance = vmath.length(go.get_position(self.interact_target)-go.get_position()) 
+			local current_distance = vmath.length(message.other_position-go.get_position()) 
+			if current_distance < last_distance then
+				msg.post(self.interact_target, "target_released")
+				msg.post(message.other_id, "check_interactable")
+				self.interact_target=message.other_id
+			end
+		else
+			msg.post(message.other_id, "check_interactable")
+			self.interact_target=message.other_id
+		end
 	end
 	if message_id==hash("release_target") then
 		self.interact_target=nil

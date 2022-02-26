@@ -1225,7 +1225,7 @@ instances {
   position {
     x: 1192.0
     y: 938.0
-    z: 0.0
+    z: 0.1
   }
   rotation {
     x: 0.0
@@ -1696,6 +1696,66 @@ instances {
   scale3 {
     x: 0.5
     y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: -411.0
+    y: -79.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: -507.0
+    y: -332.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
     z: 1.0
   }
 }

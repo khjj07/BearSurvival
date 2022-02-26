@@ -12,13 +12,33 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "behind_sprite"
+    value: "/assets/behind_sprite.material"
+    type: PROPERTY_TYPE_HASH
+  }
+  properties {
+    id: "front_sprite"
+    value: "/assets/front_sprite.material"
+    type: PROPERTY_TYPE_HASH
+  }
+  properties {
+    id: "behind_outline"
+    value: "/assets/behind_outlined.material"
+    type: PROPERTY_TYPE_HASH
+  }
+  properties {
+    id: "front_outline"
+    value: "/assets/front_outlined.material"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/assets/game.atlas\"\n"
   "default_animation: \"tree2\"\n"
-  "material: \"/assets/sprite.material\"\n"
+  "material: \"/assets/front_sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
@@ -38,7 +58,7 @@ embedded_components {
   type: "sprite"
   data: "tile_set: \"/assets/game.atlas\"\n"
   "default_animation: \"tree2\"\n"
-  "material: \"/assets/outlined.material\"\n"
+  "material: \"/assets/front_outlined.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
@@ -108,7 +128,7 @@ embedded_components {
   "friction: 0.1\n"
   "restitution: 0.5\n"
   "group: \"obstacle\"\n"
-  "mask: \"bear\"\n"
+  "mask: \"body\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"

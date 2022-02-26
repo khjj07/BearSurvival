@@ -1,4 +1,14 @@
 local layering = require "assets.layering"
+
+go.property("behind_sprite", resource.material(""))
+go.property("front_sprite", resource.material(""))
+
+
 function update(self, dt)
 	layering.update(self)
+	if go.get_position("/bear").y<go.get_position().y then
+		go.set("#sprite", "material", self.behind_sprite)
+	else
+		go.set("#sprite", "material", self.front_sprite)
+	end
 end
