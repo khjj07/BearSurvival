@@ -1,0 +1,4 @@
+local layering = require "assets.layering"
+function update(self, dt)
+	layering.update(self)
+end

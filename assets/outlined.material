@@ -1,5 +1,5 @@
 name: "unnamed"
-tags: "tile"
+tags: "rive"
 vertex_program: "/assets/outlined.vp"
 fragment_program: "/assets/outlined.fp"
 vertex_space: VERTEX_SPACE_WORLD

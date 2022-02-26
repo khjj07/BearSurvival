@@ -1,6 +1,6 @@
 components {
-  id: "bear"
-  component: "/assets/bear/bear.script"
+  id: "tree"
+  component: "/assets/object/tree/tree.script"
   position {
     x: 0.0
     y: 0.0
@@ -15,12 +15,31 @@ components {
 }
 embedded_components {
   id: "sprite"
-  type: "rivemodel"
-  data: "scene: \"/assets/bear/bear.rivescene\"\n"
-  "default_animation: \"front_idle\"\n"
-  "material: \"/defold-rive/assets/rivemodel.material\"\n"
+  type: "sprite"
+  data: "tile_set: \"/assets/game.atlas\"\n"
+  "default_animation: \"tree2\"\n"
+  "material: \"/assets/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
-  "default_state_machine: \"dummy\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "outline"
+  type: "sprite"
+  data: "tile_set: \"/assets/game.atlas\"\n"
+  "default_animation: \"tree2\"\n"
+  "material: \"/assets/outlined.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
     x: 0.0
@@ -42,14 +61,14 @@ embedded_components {
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"bear\"\n"
-  "mask: \"tree\"\n"
+  "group: \"tree\"\n"
+  "mask: \"bear\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: -111.0\n"
+  "      y: 0.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -61,7 +80,7 @@ embedded_components {
   "    index: 0\n"
   "    count: 1\n"
   "  }\n"
-  "  data: 150.0\n"
+  "  data: 300.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
@@ -84,18 +103,18 @@ embedded_components {
   id: "collisionobject1"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
+  "type: COLLISION_OBJECT_TYPE_STATIC\n"
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"bear\"\n"
-  "mask: \"obstacle\"\n"
+  "group: \"obstacle\"\n"
+  "mask: \"bear\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
-  "    shape_type: TYPE_BOX\n"
+  "    shape_type: TYPE_SPHERE\n"
   "    position {\n"
-  "      x: 0.0\n"
-  "      y: -201.0\n"
+  "      x: -3.0\n"
+  "      y: -129.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -105,11 +124,26 @@ embedded_components {
   "      w: 1.0\n"
   "    }\n"
   "    index: 0\n"
-  "    count: 3\n"
+  "    count: 1\n"
   "  }\n"
-  "  data: 150.0\n"
-  "  data: 200.0\n"
-  "  data: 10.0\n"
+  "  shapes {\n"
+  "    shape_type: TYPE_SPHERE\n"
+  "    position {\n"
+  "      x: -3.0\n"
+  "      y: -67.0\n"
+  "      z: 0.0\n"
+  "    }\n"
+  "    rotation {\n"
+  "      x: 0.0\n"
+  "      y: 0.0\n"
+  "      z: 0.0\n"
+  "      w: 1.0\n"
+  "    }\n"
+  "    index: 1\n"
+  "    count: 1\n"
+  "  }\n"
+  "  data: 50.0\n"
+  "  data: 75.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"

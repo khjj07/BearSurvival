@@ -1,4 +1,5 @@
 local move = require "assets.bear.move"
+local layering = require "assets.layering"
 local ANIMATION = {
 	left_walk = hash("left_walk"),
 	right_walk = hash("right_walk"),
@@ -134,11 +135,26 @@ end
 function update(self, dt)
 	move.update(self, dt)
 	rive_animation(self)
+	layering.update(self)
 	defrx.notify("bear_update", {position=go.get_position()})
 end
 
 function on_message(self, message_id, message, sender)
+	if self.interact_target then
+		msg.post(self.interact_target, "target_released")
+	end
 	defrx.on_message(self, message_id, message, sender)
+	if message_id==hash("contact_point_response") and message.other_group ==hash("obstacle") then
+		go.set_position(go.get_position()+message.distance*message.normal)
+	end
+	if message_id==hash("collision_response") and message.other_group == hash("tree") then
+		msg.post(message.other_id, "check_interactable")
+		self.interact_target=message.other_id
+		print(self.interact_target)
+	end
+	if message_id==hash("release_target") then
+		self.interact_target=nil
+	end
 end
 
 function final(self)

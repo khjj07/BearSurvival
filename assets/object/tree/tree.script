@@ -1,0 +1,38 @@
+local layering = require "assets.layering"
+local TREE={
+	hash("tree2"),
+	hash("tree4"),
+	hash("tree5"),
+	hash("tree6"),
+	hash("tree7"),
+	hash("tree8")
+}
+function init(self)
+	timer.delay(0.1, false, function()
+		math.randomseed(os.time())
+	end)
+	local anim = TREE[math.random(#TREE)]
+	msg.post("#sprite", "play_animation",{id=anim})
+	msg.post("#outline", "play_animation",{id=anim})
+	self.interactable=true
+	msg.post("#outline", "disable")
+end
+
+function update(self, dt)
+	layering.update(self)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id==hash("check_interactable") then
+		if self.interactable then
+			msg.post("#sprite", "disable")
+			msg.post("#outline", "enable")
+		else
+			msg.post(sender, "release_target")
+		end
+	end
+	if message_id==hash("target_released") then
+		msg.post("#sprite", "enable")
+		msg.post("#outline", "disable")
+	end
+end
