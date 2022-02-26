@@ -23,7 +23,7 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/resource/image/eat/ssug_mugwort.png"
+  image: "/resource/image/eat/mugwort.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {

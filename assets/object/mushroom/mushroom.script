@@ -1,0 +1,25 @@
+local layering = require "assets.layering"
+
+function init(self)
+	self.interactable=true
+	msg.post("#outline", "disable")
+end
+
+function update(self, dt)
+	layering.update(self)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id==hash("check_interactable") then
+		if self.interactable then
+			msg.post("#sprite", "disable")
+			msg.post("#outline", "enable")
+		else
+			msg.post(sender, "release_target")
+		end
+	end
+	if message_id==hash("target_released") then
+		msg.post("#sprite", "enable")
+		msg.post("#outline", "disable")
+	end
+end
