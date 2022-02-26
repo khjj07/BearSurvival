@@ -1759,4 +1759,804 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "mugwort1"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: -358.0
+    y: -1479.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort2"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: -1960.0
+    y: 6.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort3"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: -464.0
+    y: 538.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort4"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: -1555.0
+    y: -1138.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort5"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 318.0
+    y: 751.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort6"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 1191.0
+    y: 549.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort7"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 877.0
+    y: -388.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort8"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 568.0
+    y: -1016.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort9"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 1367.0
+    y: -1074.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic1"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: -1108.0
+    y: -1562.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic2"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: -2482.0
+    y: -1546.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic3"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: -2216.0
+    y: -630.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic4"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: -1039.0
+    y: 1084.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic5"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: -156.0
+    y: 759.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic6"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: -1465.0
+    y: -34.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic7"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: 488.0
+    y: -1514.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic8"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: 1100.0
+    y: -572.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic9"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: 1792.0
+    y: 557.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom1"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: -1006.0
+    y: -617.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom2"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: -1150.0
+    y: 319.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom3"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: 1916.0
+    y: -963.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom4"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: -1895.0
+    y: -431.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom5"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: -101.0
+    y: -1331.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom6"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: 1379.0
+    y: 804.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom7"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: -1831.0
+    y: 1144.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort10"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: -2748.0
+    y: 938.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort11"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 1995.0
+    y: -1543.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "rock17"
+  prototype: "/assets/object/rock/rock2.go"
+  position {
+    x: -961.0
+    y: -1125.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "cave"
+  prototype: "/assets/object/cave/cave.go"
+  position {
+    x: 2785.0
+    y: -1381.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tree66"
+  prototype: "/assets/object/tree/tree.go"
+  position {
+    x: 2130.0
+    y: -1205.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tree67"
+  prototype: "/assets/object/tree/tree.go"
+  position {
+    x: 2285.0
+    y: -1157.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tree68"
+  prototype: "/assets/object/tree/tree.go"
+  position {
+    x: 2641.0
+    y: -653.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "tree69"
+  prototype: "/assets/object/tree/tree.go"
+  position {
+    x: 1538.0
+    y: -1289.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort12"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 2428.0
+    y: -321.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mugwort13"
+  prototype: "/assets/object/mugwort/mugwort.go"
+  position {
+    x: 1938.0
+    y: 78.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "garlic10"
+  prototype: "/assets/object/garlic/garlic.go"
+  position {
+    x: 2423.0
+    y: 222.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom8"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: 2502.0
+    y: 694.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom9"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: 271.0
+    y: -523.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "mushroom10"
+  prototype: "/assets/object/mushroom/mushroom.go"
+  position {
+    x: 2237.0
+    y: -1381.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 1.0
+  }
+}
+instances {
+  id: "rock18"
+  prototype: "/assets/object/rock/rock1.go"
+  position {
+    x: 2758.0
+    y: -145.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.95371693
+    w: 0.3007058
+  }
+  scale3 {
+    x: 0.844
+    y: 0.872
+    z: 1.0
+  }
+}
 scale_along_z: 0
