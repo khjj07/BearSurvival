@@ -1,0 +1,22 @@
+local defrx=require "defrx.defrx"
+function init(self)
+	--go.animate("#sprite", "tint", go.PLAYBACK_LOOP_PINGPONG, vmath.vector4(1,1,0,1), go.EASING_LINEAR, 0.5)
+	defrx.create_stream("interactable")
+	defrx.observe(self, "interactable", function(self, message_id, message, sender)
+		if message.value then
+			msg.post(".", "enable")
+		else
+			msg.post(".", "disable")
+		end
+	end)
+	msg.post(".", "disable")
+end
+
+
+function on_message(self, message_id, message, sender)
+	defrx.on_message(self, message_id, message, sender)
+end
+
+function final(self)
+	defrx.cancel_all_observing(self)
+end

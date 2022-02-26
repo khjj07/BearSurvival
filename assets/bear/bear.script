@@ -27,18 +27,23 @@ local HUNGRY_DECREASE_SLEEP=0.083
 
 local MAX_HUNGRY=100
 
+local FIRE_INCREASE = 0.038
 
 
 
-go.property("accel", 100)
+go.property("accel", 500)
 go.property("friction", 0.1)
 go.property("initial_hp", 100)
 go.property("initial_hungry", 100)
 go.property("initial_temperature", 36.5)
-
+go.property("max_speed", 1200)
 local function decrease_hungry(self)
 	local value
-	value = self.hungry.value-HUNGRY_DECREASE_WAKE
+	if self.tired then
+		value = self.hungry.value-HUNGRY_DECREASE_WAKE*1.5
+	else
+		value = self.hungry.value-HUNGRY_DECREASE_WAKE
+	end
 	if value <= 0 then
 		value=0
 	end
@@ -67,6 +72,14 @@ local function decrease_hp(self)
 	end
 	if value <= 0 then
 		value=0
+	end
+	self.hp:set(value)
+end
+
+local function increase_hp(self)
+	local value=self.hp.value+0.25
+	if value >= 100 then
+		value=100
 	end
 	self.hp:set(value)
 end
@@ -109,6 +122,8 @@ end
 function init(self)
 	print(go.get_id())
 	self.daylight=true
+	self.tired=false
+	self.sleep=false
 	rive.play_anim("#sprite", "front_idle", go.PLAYBACK_LOOP_FORWARD)
 	self.current_animation=ANIMATION.front_idle
 	--move
@@ -125,12 +140,47 @@ function init(self)
 	defrx.observe(self, "minute", function(self, message_id, message)
 		decrease_hungry(self)
 		decrease_temperature(self)
-		decrease_hp(self)
+		if not self.sleep then
+			decrease_hp(self)
+		else
+			increase_hp(self)
+		end
 	end)
 
 	defrx.create_stream("daylight")
 	defrx.observe(self, "daylight", function(self, message_id, message)
 		self.daylight = message.value
+	end)
+
+	defrx.observe(self, "hp", function(self, message_id, message)
+		if message.value == 100 then
+			defrx.notify("wake_up")
+			msg.post(".","acquire_input_focus")
+			self.sleep=false
+		end
+		if message.value<=30 then
+			self.max_speed=800
+		else
+			self.max_speed=1200
+		end
+		if message.value==0 then
+			self.tired=true
+		else
+			self.tired=false
+		end
+	end)
+	defrx.create_stream("go_home")
+	defrx.observe(self, "go_home", function(self, message_id, message, sender)
+		go.set_position(go.get_position("/cave_map/cave_spawn_pos"))
+	end)
+	defrx.create_stream("go_out")
+	defrx.observe(self, "go_out", function(self, message_id, message, sender)
+		go.set_position(go.get_position("/map/out_spawn_pos"))
+	end)
+	defrx.create_stream("sleep")
+	defrx.observe(self, "sleep", function(self, message_id, message,sender)
+		self.sleep=true
+		msg.post(".","release_input_focus")
 	end)
 end
 
@@ -139,30 +189,46 @@ function update(self, dt)
 	rive_animation(self)
 	layering.update(self)
 	defrx.notify("bear_update", {position=go.get_position()})
+	print(self.interact_target)
 end
 
 function on_message(self, message_id, message, sender)
-	
 	defrx.on_message(self, message_id, message, sender)
 	if message_id==hash("contact_point_response") and message.other_group ==hash("obstacle") then
 		go.set_position(go.get_position()+message.distance*message.normal)
+		self.vel=message.normal*10
 	end
 	if message_id==hash("collision_response") and message.own_group == hash("bear") then
 		if self.interact_target  then
 			local last_distance = vmath.length(go.get_position(self.interact_target)-go.get_position()) 
 			local current_distance = vmath.length(message.other_position-go.get_position()) 
 			if current_distance < last_distance then
-				msg.post(self.interact_target, "target_released")
-				msg.post(message.other_id, "check_interactable")
-				self.interact_target=message.other_id
+				if message.other_group ~= hash("rock") and message.other_group ~= hash("fire_area")  then
+					msg.post(self.interact_target, "target_released")
+					msg.post(message.other_id, "check_interactable")
+					self.interact_target=message.other_id
+					defrx.notify("interactable", {value=true})
+				end
 			end
 		else
-			msg.post(message.other_id, "check_interactable")
-			self.interact_target=message.other_id
+			if message.other_group ~= hash("rock") and message.other_group ~= hash("fire_area") then
+				self.interact_target=message.other_id	
+				msg.post(message.other_id, "check_interactable")
+				defrx.notify("interactable", {value=true})
+			end
 		end
+	end
+	if message_id==hash("fire") then
+		local value =  self.temperature.value+FIRE_INCREASE 
+		if value>36.5 then
+			value=36.5
+		end
+		self.temperature:set(value)
+		
 	end
 	if message_id==hash("release_target") then
 		self.interact_target=nil
+		defrx.notify("interactable", {value=false})
 	end
 end
 
@@ -172,4 +238,8 @@ end
 
 function on_input(self, action_id, action)
 	move.on_input(self, action_id, action)
+	if self.interact_target and action_id==hash("interact") and action.pressed then
+		msg.post(self.interact_target, "interact")
+		self.interact_target=nil
+	end
 end

@@ -3,8 +3,8 @@ instances {
   id: "camera"
   prototype: "/assets/camera/camera.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 7365.0
+    y: -2318.0
     z: 0.0
   }
   rotation {
@@ -22,9 +22,10 @@ instances {
 instances {
   id: "bear"
   prototype: "/assets/bear/bear.go"
+  children: "key"
   position {
-    x: 0.0
-    y: 0.0
+    x: 7381.0
+    y: -2170.0
     z: 0.0
   }
   rotation {
@@ -79,6 +80,26 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "key"
+  prototype: "/assets/key/key.go"
+  position {
+    x: 370.0
+    y: 141.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "map"
   collection: "/assets/map/map.collection"
@@ -96,6 +117,26 @@ collection_instances {
   scale3 {
     x: 3.0
     y: 3.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "cave_map"
+  collection: "/assets/map/cave_map.collection"
+  position {
+    x: 15008.0
+    y: -1611.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
     z: 1.0
   }
 }

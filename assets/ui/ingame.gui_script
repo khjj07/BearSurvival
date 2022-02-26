@@ -41,6 +41,14 @@ function init(self)
 		self.node["temperature"]:set_text(tostring(math.ceil(message.value*10-0.5)/10).."℃")
 		
 	end)
+	defrx.create_stream("sleep")
+	defrx.observe(self, "sleep", function(self, message_id, message,sender)
+		self.node["fade"]:animate("color",vmath.vector4(0,0,0,1),gui.EASING_INBACK,0.2)
+	end)
+	defrx.create_stream("wake_up")
+	defrx.observe(self, "wake_up", function(self, message_id, message,sender)
+		self.node["fade"]:animate("color",vmath.vector4(0,0,0,0),gui.EASING_INBACK,0.2)
+	end)
 end
 
 function on_message(self, message_id, message, sender)
