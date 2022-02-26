@@ -1,13 +1,43 @@
 local defui = require "defui.defui"
 local UI = require "assets.ui.title"
+local YELLOW = vmath.vector4(1,1,0,1)
+local WHITE = vmath.vector4(1,1,1,1)
+local function button_hover(self,action_id,action,button)
+	button:set_color(YELLOW)
+end
+
+local function button_not_hover(self,action_id,action,button)
+	button:set_color(WHITE)
+end
+
+
 function init(self)
 	defui.init(self)
 	UI.init(self)
-	defui.create_button(self, "start_btn")
-	:on_pressed(function()
+	defui.create_button(self, "new_game_btn")
+	:on_released(function()
 		msg.post("main:/proxy", "change_scene",{next="#ingame"})
 	end)
+	:on_hover(button_hover)
+	:on_not_hover(button_not_hover)
+	
+	defui.create_button(self, "load_game_btn")
+	:on_hover(button_hover)
+	:on_not_hover(button_not_hover)
+	
+	defui.create_button(self, "credit_btn")
+	:on_released(function()
+		
+	end)
+	:on_hover(button_hover)
+	:on_not_hover(button_not_hover)
+
+	defui.create_button(self, "quit_btn")
+	:on_hover(button_hover)
+	:on_not_hover(button_not_hover)
+	
 	msg.post(".", "acquire_input_focus")
+	
 end
 
 function on_message(self, message_id, message, sender)

@@ -15,11 +15,12 @@ components {
 }
 embedded_components {
   id: "sprite"
-  type: "sprite"
-  data: "tile_set: \"/assets/game.atlas\"\n"
-  "default_animation: \"logo_256\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
+  type: "rivemodel"
+  data: "scene: \"/assets/bear/bear.rivescene\"\n"
+  "default_animation: \"front_idle\"\n"
+  "material: \"/defold-rive/assets/rivemodel.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
+  "default_state_machine: \"dummy\"\n"
   ""
   position {
     x: 0.0

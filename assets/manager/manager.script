@@ -1,0 +1,9 @@
+local time = require "assets.manager.time"
+function init(self)
+	time.init(self)
+end
+
+
+function on_message(self, message_id, message, sender)
+	time.on_message(self, message_id, message, sender)
+end

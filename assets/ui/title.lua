@@ -5,7 +5,9 @@ function G.init(self)
 	self.node={}
 	self.box_node={}
 	self.text_node={}
-	self.node["start_btn"]=box_node.create(gui.get_node("start_btn"),nil)
-	self.node["start_text"]=text_node.create(gui.get_node("start_text"),self.node["start_btn"])
+	self.node["new_game_btn"]=text_node.create(gui.get_node("new_game_btn"),nil)
+	self.node["load_game_btn"]=text_node.create(gui.get_node("load_game_btn"),nil)
+	self.node["credit_btn"]=text_node.create(gui.get_node("credit_btn"),nil)
+	self.node["quit_btn"]=text_node.create(gui.get_node("quit_btn"),nil)
 end
 return G

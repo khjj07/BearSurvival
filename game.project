@@ -1,6 +1,6 @@
 [bootstrap]
 main_collection = /main/main.collectionc
-render = /rendercam/rendercam.renderc
+render = /assets/render/redercamxrive.renderc
 
 [script]
 shared_state = 1
@@ -17,4 +17,5 @@ title = BearSurvival
 dependencies#0 = https://github.com/rgrams/rendercam/archive/1.0.3.zip
 dependencies#1 = https://github.com/khjj07/defui/archive/refs/tags/1.0.2.zip
 dependencies#2 = https://github.com/khjj07/defrx/archive/refs/tags/1.0.1.zip
+dependencies#3 = https://github.com/defold/extension-rive/archive/refs/tags/0.11.0.zip
 
