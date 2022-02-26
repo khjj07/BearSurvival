@@ -37,12 +37,13 @@ go.property("initial_temperature", 36.5)
 local function decrease_hungry(self)
 	local value
 	value = self.hungry.value-HUNGRY_DECREASE_WAKE
+	
 	self.hungry:set(value)
 end
 
 local function decrease_temperature(self)
 	local value
-	if self.day then
+	if self.daylight then
 		value = self.temperature.value-TEMPERATURE_DECREASE_DAYLIGHT
 	else
 		value = self.temperature.value-TEMPERATURE_DECREASE_NIGHT
@@ -52,11 +53,12 @@ end
 
 local function decrease_hp(self)
 	local value
-	if self.day then
+	if self.daylight then
 		value = self.hp.value-HP_DECREASE_DAYLIGHT
 	else
 		value = self.hp.value-HP_DECREASE_NIGHT
 	end
+	print(value)
 	self.hp:set(value)
 end
 
@@ -98,8 +100,9 @@ local function rive_animation(self)
 end
 
 function init(self)
-	self.day=true
-	self.current_animation=ANIMATION.idle
+	self.daylight=true
+	rive.play_anim("#sprite", "front_idle", go.PLAYBACK_LOOP_FORWARD)
+	self.current_animation=ANIMATION.front_idle
 	--move
 	msg.post(".", "acquire_input_focus")
 	move.init(self)
@@ -110,16 +113,16 @@ function init(self)
 	self.hp = defrx.create_reactive_property(self.initial_hp, "hp")
 	
 	--stream
-	defrx.create_stream("minute_passed")
-	defrx.observe(self, "minute_passed", function(self, message_id, message)
+	defrx.create_stream("minute")
+	defrx.observe(self, "minute", function(self, message_id, message)
 		decrease_hungry(self)
 		decrease_temperature(self)
 		decrease_hp(self)
 	end)
 
-	defrx.create_stream("day_switch")
-	defrx.observe(self, "day_switch", function(self, message_id, message)
-		self.day = not self.day
+	defrx.create_stream("daylight")
+	defrx.observe(self, "daylight", function(self, message_id, message)
+		self.daylight = message.value
 	end)
 end
 

@@ -1,27 +1,36 @@
+local defrx=require "defrx.defrx"
+local defui = require "defui.defui"
+local UI = require "assets.ui.ingame"
+
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	defui.init(self)
+	UI.init(self)
+	defrx.create_stream("minute")
+	defrx.observe(self, "minute", function(self, message_id, message,sender)
+		self.node["needle"]:set_rotation(vmath.vector3(0,0,-message.value*60*0.25))
+	end)
+	
+	defrx.create_stream("hp")
+	defrx.observe(self, "hp", function(self, message_id, message,sender)
+		local size = self.node["hp_stencil"]:get_size()
+		size.y=self.node["hp_stencil"].ininitial_size.y*message.value/100
+		self.node["hp_stencil"]:set_size(size)
+	end)
+	defrx.create_stream("hungry")
+	defrx.observe(self, "hungry", function(self, message_id, message,sender)
+		local size = self.node["hungry_stencil"]:get_size()
+		size.y=self.node["hungry_stencil"].ininitial_size.y*message.value/100
+		self.node["hungry_stencil"]:set_size(size)
+	end)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	defrx.on_message(self, message_id, message, sender)
 end
 
+function final(self)
+	defrx.cancel_all_observing(self)
+end
 function on_input(self, action_id, action)
 	-- Add input-handling code here. The game object this script is attached to
 	-- must have acquired input focus:
