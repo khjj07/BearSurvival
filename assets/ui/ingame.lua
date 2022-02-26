@@ -28,5 +28,7 @@ function G.init(self)
 	self.node["celcius"]=box_node.create(gui.get_node("celcius"),nil)
 	self.node["temperature_bar"]=box_node.create(gui.get_node("temperature_bar"),self.node["celcius"])
 	self.node["temperature"]=text_node.create(gui.get_node("temperature"),self.node["celcius"])
+	self.node["box"]=box_node.create(gui.get_node("box"),nil)
+	self.node["fade"]=box_node.create(gui.get_node("fade"),nil)
 end
 return G

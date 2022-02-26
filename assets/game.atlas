@@ -43,7 +43,7 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/resource/back.png"
+  image: "/resource/background.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
@@ -107,6 +107,7 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
+<<<<<<< HEAD
   image: "/resource/image/UI/start.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
@@ -120,6 +121,13 @@ images {
 }
 images {
   image: "/resource/image/UI/game_name.png"
+=======
+  image: "/resource/image/key.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/resource/cave_background.png"
+>>>>>>> e5ccdef2aa90bd4c0884f6c6ae781799c9ffe999
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

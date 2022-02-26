@@ -1,0 +1,43 @@
+local layering = require "assets.layering"
+local defrx=require "defrx.defrx"
+
+function init(self)
+	self.fire_routine =nil
+	self.target=nil
+end
+
+function update(self, dt)
+	layering.update(self)
+	self.target=nil
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id==hash("trigger_response") and message.own_group == hash("fire") then
+		if not message.enter then
+			msg.post(message.other_id, "release_target")
+		end
+	end
+	if message_id==hash("collision_response") and message.own_group==hash("fire_area") then
+		self.target=message.other_id
+	end
+	
+	if message_id==hash("check_interactable") then
+		if self.fire_routine then
+			msg.post(sender, "release_target")
+		end
+	end
+	
+	if message_id==hash("interact") then
+		particlefx.play("#fire")
+		self.fire_routine = timer.delay(0.125, true, function()
+			if self.target then
+				msg.post(self.target, "fire")
+			end
+		end)
+		timer.delay(7.5, false, function()
+			timer.cancel(self.fire_routine)
+			self.fire_routine =nil
+			particlefx.stop("#fire")
+		end)
+	end	
+end

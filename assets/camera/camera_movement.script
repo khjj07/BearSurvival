@@ -1,10 +1,45 @@
 local defrx=require "defrx.defrx"
-
+local rendercam = require "rendercam.rendercam"
+local WIDTH = 4800
+local HEIGHT = 2800
 function init(self)
+	self.cave=false
+	defrx.create_stream("go_home")
+	defrx.observe(self, "go_home", function(self, message_id, message, sender)
+		go.set_position(go.get_position("/cave_map/cave_background"))
+		self.cave=true
+	end)
+
+	defrx.create_stream("go_out")
+	defrx.observe(self, "go_out", function(self, message_id, message, sender)
+		go.set_position(go.get_position("/map/out_spawn_pos"))
+		self.cave=false
+	end)
 	defrx.create_stream("bear_update")
 	defrx.observe(self, "bear_update", function(self, message_id, message, sender)
-		go.cancel_animations(".", "position")
-		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, message.position, go.EASING_INBACK, 0.01)	
+		if not self.cave then
+			go.cancel_animations(".", "position")
+			if math.abs(message.position.x)+960<WIDTH then
+				go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, message.position.x, go.EASING_INBACK, 0.01)	
+			else
+				if message.position.x>0 then
+					message.position.x=WIDTH-960
+				else
+					message.position.x=-WIDTH+960
+				end
+				go.set_position(message.position)
+			end
+			if math.abs(message.position.y)+540<HEIGHT then
+				go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, message.position.y, go.EASING_INBACK, 0.01)	
+			else
+				if message.position.y>0 then
+					message.position.y=HEIGHT-540
+				else
+					message.position.y=-HEIGHT+540
+				end
+				go.set_position(message.position)
+			end
+		end
 	end)
 end
 

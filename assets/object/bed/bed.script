@@ -1,0 +1,21 @@
+local layering = require "assets.layering"
+local defrx=require "defrx.defrx"
+
+function init(self)
+	self.interactable=true
+end
+
+function update(self, dt)
+	layering.update(self)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id==hash("trigger_response") then
+		if not message.enter then
+			msg.post(message.other_id, "release_target")
+		end
+	end
+	if message_id==hash("interact") then
+		defrx.notify("sleep")
+	end	
+end
