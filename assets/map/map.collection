@@ -20,26 +20,6 @@ instances {
   }
 }
 instances {
-  id: "tree"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 553.0
-    y: 1042.0
-    z: 0.1
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree1"
   prototype: "/assets/object/tree/tree.go"
   position {
@@ -60,51 +40,11 @@ instances {
   }
 }
 instances {
-  id: "tree2"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -1732.0
-    y: 1380.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree4"
   prototype: "/assets/object/tree/tree.go"
   position {
     x: -2548.0
     y: 690.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree5"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -2614.0
-    y: -1194.0
     z: 0.0
   }
   rotation {
@@ -160,71 +100,11 @@ instances {
   }
 }
 instances {
-  id: "tree12"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -2096.0
-    y: 1022.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree13"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -2037.0
-    y: 577.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree15"
   prototype: "/assets/object/tree/tree.go"
   position {
     x: -1420.0
     y: 1121.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree16"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -909.0
-    y: 1314.0
     z: 0.0
   }
   rotation {
@@ -260,26 +140,6 @@ instances {
   }
 }
 instances {
-  id: "tree19"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 226.0
-    y: 1314.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree20"
   prototype: "/assets/object/tree/tree.go"
   position {
@@ -300,71 +160,11 @@ instances {
   }
 }
 instances {
-  id: "tree21"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -1141.0
-    y: 564.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree23"
   prototype: "/assets/object/tree/tree.go"
   position {
     x: -2023.0
     y: -1393.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree24"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -1387.0
-    y: -1433.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree25"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -1924.0
-    y: -889.0
     z: 0.0
   }
   rotation {
@@ -440,26 +240,6 @@ instances {
   }
 }
 instances {
-  id: "tree33"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 1208.0
-    y: -935.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree34"
   prototype: "/assets/object/tree/tree.go"
   position {
@@ -485,26 +265,6 @@ instances {
   position {
     x: 882.0
     y: -1433.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree36"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 2106.0
-    y: -298.0
     z: 0.0
   }
   rotation {
@@ -580,111 +340,11 @@ instances {
   }
 }
 instances {
-  id: "tree42"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 699.0
-    y: -172.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree43"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 1542.0
-    y: -33.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree45"
   prototype: "/assets/object/tree/tree.go"
   position {
     x: 2584.0
     y: 352.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree46"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 1515.0
-    y: 518.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree49"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -234.0
-    y: -458.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree50"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -513.0
-    y: 99.0
     z: 0.0
   }
   rotation {
@@ -720,51 +380,11 @@ instances {
   }
 }
 instances {
-  id: "tree54"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -1130.0
-    y: -445.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "tree55"
   prototype: "/assets/object/tree/tree.go"
   position {
     x: -1641.0
     y: -332.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree57"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -1189.0
-    y: 0.0
     z: 0.0
   }
   rotation {
@@ -805,66 +425,6 @@ instances {
   position {
     x: -825.0
     y: 358.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree53"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 1192.0
-    y: 938.0
-    z: 0.1
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree61"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -2608.0
-    y: -309.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree62"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: -2563.0
-    y: 270.0
     z: 0.0
   }
   rotation {
@@ -1925,26 +1485,6 @@ instances {
   position {
     x: 2130.0
     y: -1205.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "tree69"
-  prototype: "/assets/object/tree/tree.go"
-  position {
-    x: 1538.0
-    y: -1289.0
     z: 0.0
   }
   rotation {
