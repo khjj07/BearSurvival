@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/assets/game.atlas\"\n"
+  data: "tile_set: \"/assets/interacts.atlas\"\n"
   "default_animation: \"mushroom_1\"\n"
   "material: \"/assets/behind_sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
@@ -82,7 +82,7 @@ embedded_components {
 embedded_components {
   id: "outline"
   type: "sprite"
-  data: "tile_set: \"/assets/game.atlas\"\n"
+  data: "tile_set: \"/assets/interacts.atlas\"\n"
   "default_animation: \"mushroom_1\"\n"
   "material: \"/assets/behind_outlined.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"

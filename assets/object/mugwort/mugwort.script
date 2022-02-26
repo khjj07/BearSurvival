@@ -3,7 +3,8 @@ local layering = require "assets.layering"
 function init(self)
 	self.interactable=true
 	msg.post("#outline", "disable")
-	go.set("#outline", "offset", vmath.vector4(0.005,0,0,0))
+	go.set("#outline", "offset", vmath.vector4(0.02,0,0,0))
+	go.set("#outline", "bordercolor", vmath.vector4(0,1,0,0.6))
 end
 
 function update(self, dt)

@@ -37,6 +37,7 @@ go.property("initial_hp", 100)
 go.property("initial_hungry", 100)
 go.property("initial_temperature", 36.5)
 go.property("max_speed", 1200)
+
 local function decrease_hungry(self)
 	local value
 	if self.tired then
