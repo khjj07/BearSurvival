@@ -20,7 +20,7 @@ local TEMPERATURE_DECREASE_NIGHT=0.008
 local TEMPERATURE_DECREASE_IN_RIVER=0.003
 local DEAD_TEMPERATURE=32
 
-local HUNGRY_DECREASE_WAKE=0.25
+local HUNGRY_DECREASE_WAKE=0.167
 local HUNGRY_DECREASE_SLEEP=0.083
 
 local MAX_HUNGRY=100
@@ -37,7 +37,9 @@ go.property("initial_temperature", 36.5)
 local function decrease_hungry(self)
 	local value
 	value = self.hungry.value-HUNGRY_DECREASE_WAKE
-	
+	if value <= 0 then
+		value=0
+	end
 	self.hungry:set(value)
 end
 
@@ -48,6 +50,9 @@ local function decrease_temperature(self)
 	else
 		value = self.temperature.value-TEMPERATURE_DECREASE_NIGHT
 	end
+	if value <= DEAD_TEMPERATURE then
+		value=DEAD_TEMPERATURE
+	end
 	self.temperature:set(value)
 end
 
@@ -57,6 +62,9 @@ local function decrease_hp(self)
 		value = self.hp.value-HP_DECREASE_DAYLIGHT
 	else
 		value = self.hp.value-HP_DECREASE_NIGHT
+	end
+	if value <= 0 then
+		value=0
 	end
 	self.hp:set(value)
 end

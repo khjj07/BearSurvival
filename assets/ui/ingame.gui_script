@@ -19,12 +19,27 @@ function init(self)
 		local size = self.node["hp_stencil"]:get_size()
 		size.y=self.node["hp_stencil"].ininitial_size.y*message.value/100
 		self.node["hp_stencil"]:set_size(size)
+		self.node["hp"]:set_text(math.floor(message.value))
 	end)
 	defrx.create_stream("hungry")
 	defrx.observe(self, "hungry", function(self, message_id, message,sender)
 		local size = self.node["hungry_stencil"]:get_size()
 		size.y=self.node["hungry_stencil"].ininitial_size.y*message.value/100
 		self.node["hungry_stencil"]:set_size(size)
+		self.node["hungry"]:set_text(math.floor(message.value))
+	end)
+
+	defrx.create_stream("temperature")
+	defrx.observe(self, "temperature", function(self, message_id, message,sender)
+		local value = (message.value-32)/4.5
+		if value>0.5 then
+			self.node["temperature_bar"]:set_color(self.node["temperature_bar"].ininitial_color)
+		else
+			self.node["temperature_bar"]:set_color(vmath.vector4(0,0,1,1))
+		end
+		self.node["temperature_bar"]:set_scale(vmath.vector3(1,value,1))
+		self.node["temperature"]:set_text(tostring(math.ceil(message.value*10-0.5)/10).."℃")
+		
 	end)
 end
 

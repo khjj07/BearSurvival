@@ -1,5 +1,5 @@
 local M={}
-local MAX_SPEED = 500
+local MAX_SPEED = 800
 function M.init(self)
 	self.vel=vmath.vector3()
 end
