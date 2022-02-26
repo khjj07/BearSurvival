@@ -58,14 +58,11 @@ local function decrease_hp(self)
 	else
 		value = self.hp.value-HP_DECREASE_NIGHT
 	end
-	print(value)
 	self.hp:set(value)
 end
 
 local function rive_animation(self)
-	print(self.current_animation)
 	if vmath.length(self.vel)<10 then
-		
 		if self.current_animation==ANIMATION.left_walk  then
 			rive.cancel("#sprite")
 			rive.play_anim("#sprite", "left_idle", go.PLAYBACK_LOOP_FORWARD)
@@ -129,6 +126,7 @@ end
 function update(self, dt)
 	move.update(self, dt)
 	rive_animation(self)
+	defrx.notify("bear_update", {position=go.get_position()})
 end
 
 function on_message(self, message_id, message, sender)

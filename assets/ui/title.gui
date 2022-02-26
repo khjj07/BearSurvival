@@ -1,7 +1,7 @@
 script: "/assets/ui/title.gui_script"
 fonts {
-  name: "system_font"
-  font: "/builtins/fonts/system_font.font"
+  name: "katuri"
+  font: "/katuri.font"
 }
 background_color {
   x: 0.0
@@ -23,13 +23,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 5.0
-    y: 5.0
+    x: 3.0
+    y: 3.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 70.0
+    x: 200.0
     y: 30.0
     z: 0.0
     w: 1.0
@@ -43,7 +43,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "New Game"
-  font: "system_font"
+  font: "katuri"
   id: "new_game_btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -85,13 +85,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 5.0
-    y: 5.0
-    z: 1.0
+    x: 3.0
+    y: 3.0
+    z: 3.0
     w: 1.0
   }
   size {
-    x: 70.0
+    x: 200.0
     y: 30.0
     z: 0.0
     w: 1.0
@@ -105,7 +105,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Load Game"
-  font: "system_font"
+  font: "katuri"
   id: "load_game_btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -147,13 +147,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 5.0
-    y: 5.0
-    z: 1.0
+    x: 3.0
+    y: 3.0
+    z: 3.0
     w: 1.0
   }
   size {
-    x: 70.0
+    x: 200.0
     y: 30.0
     z: 0.0
     w: 1.0
@@ -167,7 +167,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Credit"
-  font: "system_font"
+  font: "katuri"
   id: "credit_btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -209,13 +209,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 5.0
-    y: 5.0
-    z: 1.0
+    x: 3.0
+    y: 3.0
+    z: 3.0
     w: 1.0
   }
   size {
-    x: 70.0
+    x: 200.0
     y: 30.0
     z: 0.0
     w: 1.0
@@ -229,7 +229,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Quit"
-  font: "system_font"
+  font: "katuri"
   id: "quit_btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

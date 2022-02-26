@@ -50,11 +50,10 @@ function update(self)
 	render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
 	render.disable_state(render.STATE_CULL_FACE)
 	
+	render.draw(self.tile_pred)
 	render.enable_state(render.STATE_STENCIL_TEST)
 	render.draw(self.rive_pred)
 	render.disable_state(render.STATE_STENCIL_TEST)
-	
-	render.draw(self.tile_pred)
 	render.draw(self.particle_pred)
 
 	-- Model rendering

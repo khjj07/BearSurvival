@@ -22,5 +22,6 @@ function G.init(self)
 	self.node["pie4"]=box_node.create(gui.get_node("pie4"),self.node["box3"])
 	self.node["pie5"]=box_node.create(gui.get_node("pie5"),self.node["pie4"])
 	self.node["pie6"]=box_node.create(gui.get_node("pie6"),self.node["pie5"])
+	self.node["day"]=text_node.create(gui.get_node("day"),nil)
 end
 return G

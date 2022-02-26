@@ -1,0 +1,17 @@
+local defrx=require "defrx.defrx"
+
+function init(self)
+	defrx.create_stream("bear_update")
+	defrx.observe(self, "bear_update", function(self, message_id, message, sender)
+		go.cancel_animations(".", "position")
+		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, message.position, go.EASING_INBACK, 0.02)	
+	end)
+end
+
+function on_message(self, message_id, message, sender)
+	defrx.on_message(self, message_id, message, sender)
+end
+
+function final(self)
+	defrx.cancel_all_observing(self)
+end
