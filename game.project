@@ -22,3 +22,6 @@ dependencies#3 = https://github.com/defold/extension-rive/archive/refs/tags/0.11
 [sprite]
 max_count = 512
 
+[windows]
+app_icon = /resource/icon.ico
+

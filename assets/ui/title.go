@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "title_bgm"
   type: "sound"
-  data: "sound: \"/resource/sound/BGM/starting/starting.wav\"\n"
+  data: "sound: \"/resource/sound/the-stars-shatter-and-pour-down-21419 (online-audio-converter.com).wav\"\n"
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

@@ -33,7 +33,9 @@ function init(self)
 	defui.create_button(self, "quit_btn")
 	:on_hover(button_hover)
 	:on_not_hover(button_not_hover)
-	
+	:on_released(function()
+		os.exit()
+	end)
 	msg.post(".", "acquire_input_focus")
 	
 end
