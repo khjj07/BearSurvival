@@ -5,6 +5,7 @@ local UI = require "assets.ui.ingame"
 function init(self)
 	defui.init(self)
 	UI.init(self)
+	sound.play("#ingame_bgm")
 	self.inventory={}
 	defrx.create_stream("minute")
 	defrx.observe(self, "minute", function(self, message_id, message,sender)
@@ -53,14 +54,21 @@ function init(self)
 
 	defrx.create_stream("update_inventory")
 	defrx.observe(self, "update_inventory", function(self, message_id, message,sender)
+		local num=0
 		for k, v in pairs(self.inventory) do
 			self.node["slot"..k]:change_texture(v,"game")
 			:set_color(vmath.vector4(1,1,1,1))
+			num=k
+		end
+	
+		for i = num+1, 9 do
+			self.node["slot"..i]:set_color(vmath.vector4(1,1,1,0))
 		end
 	end)
 	
 	defrx.create_stream("wood")
 	defrx.observe(self, "wood", function(self, message_id, message,sender)
+		sound.play("#get_item")
 		if #self.inventory<=9 then
 			table.insert(self.inventory, "wood")
 			defrx.notify("update_inventory")
@@ -68,6 +76,7 @@ function init(self)
 	end)
 	defrx.create_stream("mushroom")
 	defrx.observe(self, "mushroom", function(self, message_id, message,sender)
+		sound.play("#get_item")
 		if #self.inventory<=9 then
 			table.insert(self.inventory, "mushroom_1")
 			defrx.notify("update_inventory")
@@ -75,6 +84,7 @@ function init(self)
 	end)
 	defrx.create_stream("mugwort")
 	defrx.observe(self, "mugwort", function(self, message_id, message,sender)
+		sound.play("#get_item")
 		if #self.inventory<=9 then
 			table.insert(self.inventory, "mugwort")
 			defrx.notify("update_inventory")
@@ -82,11 +92,46 @@ function init(self)
 	end)
 	defrx.create_stream("garlic")
 	defrx.observe(self, "garlic", function(self, message_id, message,sender)
+		sound.play("#get_item")
 		if #self.inventory<=9 then
 			table.insert(self.inventory, "garlic")
 			defrx.notify("update_inventory")
 		end
 	end)
+	
+	defrx.create_stream("use_wood")
+	defrx.observe(self, "use_wood", function(self, message_id, message,sender)
+		for k, v in pairs(self.inventory) do
+			if v=="wood" then
+				table.remove(self.inventory,k)
+				defrx.notify("update_inventory")
+				break
+			end
+		end
+	end)
+	
+	defrx.create_stream("game_over")
+	defrx.observe(self, "game_over", function(self, message_id, message,sender)
+		self.node["game_over_tap"]:show()
+		timer.delay(3, false, function()
+			msg.post("main:/proxy", "change_scene",{next="#title"})
+		end)
+	end)
+
+	defrx.create_stream("minigame")
+	defrx.observe(self, "minigame", function(self, message_id, message,sender)
+		msg.post(".", "release_input_focus")
+		self.node["inventory"]:hide()
+	end)
+
+	defrx.create_stream("minigame_end")
+	defrx.observe(self, "minigame_end", function(self, message_id, message,sender)
+		msg.post(".", "acquire_input_focus")
+		self.node["inventory"]:show()
+	end)
+	
+	self.node["game_over_tap"]:hide()
+	msg.post(".","acquire_input_focus")
 end
 
 function on_message(self, message_id, message, sender)
@@ -95,17 +140,18 @@ end
 
 function final(self)
 	defrx.cancel_all_observing(self)
+	sound.stop("#ingame_bgm")
 end
 function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
+	for i = 1, 9 do
+		if action_id==hash(tostring(i)) and self.inventory[i] and action.pressed then
+			if self.inventory[i] ~="wood" then
+				defrx.notify("use", {item = self.inventory[i]})
+				table.remove(self.inventory,i)
+				defrx.notify("update_inventory")
+			end
+		end
+	end
 end
 
 function on_reload(self)

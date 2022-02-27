@@ -51,6 +51,15 @@ local function decrease_hungry(self)
 	self.hungry:set(value)
 end
 
+local function increase_hungry(self,x)
+	local value
+	value = self.hungry.value+x
+	if value >= 100 then
+		value=100
+	end
+	self.hungry:set(value)
+end
+
 local function decrease_temperature(self)
 	local value
 	if self.daylight then
@@ -120,11 +129,24 @@ local function rive_animation(self)
 	end
 end
 
+local function game_over(self)
+	self.game_over=true
+	msg.post(".", "release_input_focus")
+	go.delete("/key")
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y-200, go.EASING_OUTBOUNCE, 0.3)
+	go.animate(".", "euler.z", go.PLAYBACK_ONCE_FORWARD, -90, go.EASING_INCUBIC, 0.3,0,function()
+		timer.delay(0.5, false, function()
+			defrx.notify("game_over")
+		end)
+	end)
+end
+
 function init(self)
 	print(go.get_id())
 	self.daylight=true
 	self.tired=false
 	self.sleep=false
+	self.wood=0
 	rive.play_anim("#sprite", "front_idle", go.PLAYBACK_LOOP_FORWARD)
 	self.current_animation=ANIMATION.front_idle
 	--move
@@ -183,6 +205,58 @@ function init(self)
 		self.sleep=true
 		msg.post(".","release_input_focus")
 	end)
+	
+	defrx.create_stream("hungry")
+	defrx.observe(self, "hungry", function(self, message_id, message,sender)
+		if message.value<=0 and  not self.game_over then
+			game_over(self)
+		end
+	end)
+	
+	defrx.create_stream("temperature")
+	defrx.observe(self, "temperature", function(self, message_id, message,sender)
+		if message.value<=32 and not self.game_over then
+			game_over(self)
+		end
+	end)
+	
+	
+	defrx.create_stream("use")
+	defrx.observe(self, "use", function(self, message_id, message,sender)
+		sound.play("#eat")
+		if message.item=="garlic" then
+			increase_hungry(self,15)
+		elseif message.item=="mugwrot" then
+			increase_hungry(self,10)
+		elseif message.item=="mushroom_1" then
+			increase_hungry(self,20)
+		end
+	end)
+	defrx.create_stream("wood")
+	defrx.observe(self, "wood", function(self, message_id, message,sender)
+		self.wood=self.wood+1
+	end)
+	
+	defrx.create_stream("use_wood")
+	defrx.observe(self, "use_wood", function(self, message_id, message,sender)
+		self.wood=self.wood-1
+	end)
+	
+	defrx.create_stream("minigame")
+	defrx.observe(self, "minigame", function(self, message_id, message,sender)
+		msg.post(".", "release_input_focus")
+	end)
+
+	defrx.create_stream("minigame_end")
+	defrx.observe(self, "minigame_end", function(self, message_id, message,sender)
+		msg.post(".", "acquire_input_focus")
+	end)
+	defrx.create_stream("force_wake_up")
+	defrx.observe(self, "force_wake_up", function(self, message_id, message,sender)
+		defrx.notify("wake_up")
+		msg.post(".","acquire_input_focus")
+		self.sleep=false
+	end)
 end
 
 function update(self, dt)
@@ -231,6 +305,14 @@ function on_message(self, message_id, message, sender)
 		self.interact_target=nil
 		defrx.notify("interactable", {value=false})
 	end
+	if message_id==hash("cost_hp") then
+		local value=self.hp.value-5
+		if value <= 0 then
+			value=0
+		end
+		self.hp:set(value)
+		self.interact_target=nil
+	end	
 end
 
 function final(self)
@@ -240,7 +322,6 @@ end
 function on_input(self, action_id, action)
 	move.on_input(self, action_id, action)
 	if self.interact_target and action_id==hash("interact") and action.pressed then
-		msg.post(self.interact_target, "interact")
-		self.interact_target=nil
+		msg.post(self.interact_target, "interact",{wood = self.wood})
 	end
 end

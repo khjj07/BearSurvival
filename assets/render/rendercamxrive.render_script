@@ -16,6 +16,7 @@ end
 function init(self)
 	self.tile_pred = render.predicate({"tile"})
 	self.gui_pred = render.predicate({"gui"})
+	self.back_gui_pred = render.predicate({"back_gui"})
 	self.text_pred = render.predicate({"text"})
 	self.model_pred = render.predicate({"model"})
 	self.particle_pred = render.predicate({"particle"})
@@ -74,6 +75,7 @@ function update(self)
 	render.set_projection(self.gui_proj) -- gui_proj only calculated on update_window
 
 	render.enable_state(render.STATE_STENCIL_TEST)
+	render.draw(self.back_gui_pred)
 	render.draw(self.gui_pred)
 	render.draw(self.text_pred) -- Includes debug text from "draw_text" messages.
 	render.disable_state(render.STATE_STENCIL_TEST)

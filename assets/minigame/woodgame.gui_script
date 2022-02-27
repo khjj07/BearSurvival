@@ -1,0 +1,64 @@
+local defrx=require "defrx.defrx"
+local defui = require "defui.defui"
+local UI = require "assets.minigame.woodgame"
+local METHOD =
+{
+
+	gui.EASING_LINEAR,	 
+	gui.EASING_INBACK,	gui.EASING_OUTBACK,
+	gui.EASING_INOUTBACK,	gui.EASING_OUTINBACK,
+	gui.EASING_INBOUNCE,	gui.EASING_OUTBOUNCE,
+	gui.EASING_INOUTBOUNCE,	gui.EASING_OUTINBOUNCE,
+	gui.EASING_INELASTIC,	gui.EASING_OUTELASTIC,
+	gui.EASING_INOUTELASTIC	,gui.EASING_OUTINELASTIC,
+	gui.EASING_INSINE,	gui.EASING_OUTSINE,
+	gui.EASING_INOUTSINE,	gui.EASING_OUTINSINE,
+	gui.EASING_INEXPO,	gui.EASING_OUTEXPO,
+	gui.EASING_INOUTEXPO,	gui.EASING_OUTINEXPO,
+	gui.EASING_INCIRC,	gui.EASING_OUTCIRC,
+	gui.EASING_INOUTCIRC,	gui.EASING_OUTINCIRC,
+	gui.EASING_INQUAD	,gui.EASING_OUTQUAD,
+	gui.EASING_INOUTQUAD,	gui.EASING_OUTINQUAD,
+	gui.EASING_INCUBIC,	gui.EASING_OUTCUBIC,
+	gui.EASING_INOUTCUBIC	,gui.EASING_OUTINCUBIC,
+	gui.EASING_INQUART	,gui.EASING_OUTQUART,
+	gui.EASING_INOUTQUART,	gui.EASING_OUTINQUART,
+	gui.EASING_INQUINT,	gui.EASING_OUTQUINT,
+	gui.EASING_INOUTQUINT,	gui.EASING_OUTINQUINT
+}
+function init(self)
+	defui.init(self)
+	UI.init(self)
+	math.randomseed(os.time())
+	self.fail=0
+	self.success=0
+	self.node["hand"]:animate("position.x",1720,METHOD[math.random(#METHOD)],3,0,nil,gui.PLAYBACK_LOOP_PINGPONG)
+	msg.post(".","acquire_input_focus")
+end
+
+function on_input(self, action_id, action)
+	if action_id==hash("touch") and action.pressed then
+		print(math.abs(self.node["hand"]:get_position().x-960))
+		if math.abs(self.node["hand"]:get_position().x-960)<200 then
+			gui.cancel_animation(self.node["hand"].id,"position")
+			self.node["hand"]:animate("position.y",500,gui.EASING_INBACK,0.2,0,function()
+				self.node["hand"]:set_position(self.node["hand"].ininitial_position)
+				:animate("position.x",1720,METHOD[math.random(#METHOD)],3,0,nil,gui.PLAYBACK_LOOP_PINGPONG)
+			end,gui.PLAYBACK_ONCE_PINGPONG)
+			self.success=self.success+1
+			if self.success==3 then
+				defrx.notify("wood")
+				msg.post("#minigame", "end")
+			end
+		else
+			self.fail=self.fail+1
+			if self.fail==2 then
+				msg.post("#minigame", "end")
+			end
+		end
+	end
+end
+
+function final(self)
+	defrx.notify("minigame_end")
+end

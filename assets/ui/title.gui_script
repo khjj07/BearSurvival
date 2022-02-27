@@ -14,14 +14,12 @@ end
 function init(self)
 	defui.init(self)
 	UI.init(self)
+	sound.play("#title_bgm")
 	defui.create_button(self, "new_game_btn")
 	:on_released(function()
 		msg.post("main:/proxy", "change_scene",{next="#ingame"})
+		sound.stop("#title_bgm")
 	end)
-	:on_hover(button_hover)
-	:on_not_hover(button_not_hover)
-	
-	defui.create_button(self, "load_game_btn")
 	:on_hover(button_hover)
 	:on_not_hover(button_not_hover)
 	

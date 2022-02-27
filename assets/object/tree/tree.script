@@ -23,7 +23,8 @@ function init(self)
 	msg.post("#outline", "play_animation",{id=anim})
 	self.interactable=true
 	self.behind=false
-
+	defrx.create_stream("dummy")
+	defrx.observe(self, "dummy")
 	msg.post("#outline", "disable")
 end
 
@@ -39,6 +40,7 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	defrx.on_message(self, message_id, message, sender)
 	if message_id==hash("check_interactable") then
 		if self.interactable then
 			msg.post("#sprite", "disable")
@@ -59,9 +61,20 @@ function on_message(self, message_id, message, sender)
 		msg.post("#outline", "disable")
 	end
 	if message_id==hash("interact") then
-		defrx.notify("wood")
+		factory.create("#woodgame")
+		defrx.notify("minigame")
+		msg.post(sender, "cost_hp")
 		msg.post("#sprite", "enable")
 		msg.post("#outline", "disable")
 		self.interactable=false
+		self.day=0
+		defrx.observe(self, "day", function(self, message_id, message)
+			self.day=self.day+1
+			if self.day==3 then
+				self.interactable=true
+				defrx.cancel_all_observing(self)
+			end
+		end)	
 	end
+	
 end

@@ -1,0 +1,54 @@
+local defrx=require "defrx.defrx"
+local defui = require "defui.defui"
+local UI = require "assets.minigame.mushgame"
+
+function init(self)
+	defui.init(self)
+	UI.init(self)
+	self.num={}
+	self.mushroom={}
+	self.touch_count=1
+	math.randomseed(os.time())
+	for i = 1, 400 do
+		table.insert(self.num, i)
+	end
+	for i = 1, 5 do
+		local x= math.random(#self.num)
+		table.insert(self.mushroom, {content = self.num[x], index=i})
+		self.node["num"..i]:set_text(self.num[x])
+	end
+	table.sort(self.mushroom,function(a,b)
+		return a.content<b.content
+	end)
+	pprint(self.mushroom)
+	timer.delay(2, false, function()
+		for i = 1, 5 do
+			gui.set_enabled(self.node["num"..i].id,false)
+		end
+		msg.post(".","acquire_input_focus")
+		gui.set_enabled(self.node["text"].id,true)
+	end)
+	gui.set_enabled(self.node["text"].id,false)
+end
+
+function on_input(self, action_id, action)
+	for i = 1, 5 do
+		if action_id==hash("touch") and self.node["mushroom"..i]:pick_node(action.x,action.y) and action.pressed then
+			if self.mushroom[self.touch_count].index == i then
+				self.node["mushroom"..i]:hide()
+				self.touch_count=self.touch_count+1
+				if self.touch_count == 6 then
+					defrx.notify("mushroom")
+					msg.post("#minigame", "end")
+				end
+			else
+				msg.post("#minigame", "end")
+			end
+		end
+	end
+	
+
+end
+function final(self)
+	defrx.notify("minigame_end")
+end

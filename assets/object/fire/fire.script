@@ -28,16 +28,21 @@ function on_message(self, message_id, message, sender)
 	end
 	
 	if message_id==hash("interact") then
-		particlefx.play("#fire")
-		self.fire_routine = timer.delay(0.125, true, function()
-			if self.target then
-				msg.post(self.target, "fire")
-			end
-		end)
-		timer.delay(7.5, false, function()
-			timer.cancel(self.fire_routine)
-			self.fire_routine =nil
-			particlefx.stop("#fire")
-		end)
+		if message.wood>0 then
+			defrx.notify("use_wood")
+			particlefx.play("#fire")
+			sound.play("#burn")
+			self.fire_routine = timer.delay(0.125, true, function()
+				if self.target then
+					msg.post(self.target, "fire")
+				end
+			end)
+			timer.delay(7.5, false, function()
+				timer.cancel(self.fire_routine)
+				sound.stop("#burn")
+				self.fire_routine =nil
+				particlefx.stop("#fire")
+			end)
+		end
 	end	
 end
