@@ -1,13 +1,9 @@
-# Welcome to Defold
+# BearSurvival
 
-This project was created from the "empty" project template.
+**게임잼 프로젝트** — 2022년 2월 스마일게이트 게임잼 출품작 "봄을 기다리곰" (2인 개발)
 
-The settings in ["game.project"](defold://open?path=/game.project) are all the default. A bootstrap empty ["main.collection"](defold://open?path=/main/main.collection) is included.
+**개발 기간**: 2022.02 ~ 2022.02
 
-Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
+## 엔진
 
-If you run into trouble, help is available in [our forum](https://forum.defold.com).
-
-Happy Defolding!
-
----
+- Defold
